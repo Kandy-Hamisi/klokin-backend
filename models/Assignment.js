@@ -11,6 +11,14 @@ const assignmentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Site',
         required: true,
+    },
+    date: {
+        type: Date,
+        required: true,
+    },
+    clockInTime: {
+        type: Date,
+        required: true,
     }
 });
 

@@ -11,6 +11,7 @@ const app = express();
 // import routes
 const userRoute = require('./routes/user.route');
 const siteRoute = require('./routes/site.route');
+const assignmentRoute = require('./routes/assignment.route');
 
 
 app.use(helmet());
@@ -36,7 +37,7 @@ app.use(express.json());
 
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/sites', siteRoute);
-
+app.use('/api/v1/assignment', assignmentRoute);
 
 
 const PORT = 8000 || process.env.PORT;
