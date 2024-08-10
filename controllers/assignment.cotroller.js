@@ -10,7 +10,7 @@ const createAssignment = async (req, res) => {
         } = req.body;
 
         // Validate input
-        if (!siteId || !dataCollectorId || !date) {
+        if (!siteId || !userId || !date) {
             return res.status(400).json({ message: 'Site ID, Data Collector ID, and Date are required.' });
         }
 
@@ -25,7 +25,7 @@ const createAssignment = async (req, res) => {
         }
 
         // create assignment
-        const assignment = new Assignment({ site: siteId, dataCollector: dataCollectorId, date });
+        const assignment = new Assignment({ siteId, userId, date });
         await assignment.save();
 
         res.status(201).json(assignment);
