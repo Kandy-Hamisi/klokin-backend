@@ -15,7 +15,11 @@ const assignmentRoute = require('./routes/assignment.route');
 
 
 app.use(helmet());
-app.use(cors());
+app.use(cors(
+    {
+        origin: "*"
+    }
+));
 
 
 app.use(bodyParser.json({ limit: "25mb" }));

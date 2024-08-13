@@ -18,7 +18,7 @@ const assignmentSchema = new Schema({
     },
     clockInTime: {
         type: Date,
-        required: true,
+        default: ""
     }
 });
 

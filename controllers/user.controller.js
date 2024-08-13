@@ -61,6 +61,29 @@ const loginUser = async (req, res) => {
     }
 }
 
+const loginAdmin = async (req, res) => {
+    try {
+
+        const { userName, role, idNumber } = req.body;
+
+        const user = await User.findOne({ idNumber, role: 'admin' });
+
+        if (!user) {
+            return res.status(401).json({ message: "Invalid credentials" });
+        }
+
+        res.status(200).json({
+            message: "Admin logged in successfully",
+            user
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+} 
+
 const fetchAllUsers = async (req, res) => {
     try {
         const users = await User.find();
@@ -73,4 +96,4 @@ const fetchAllUsers = async (req, res) => {
     }
 }
 
-module.exports = { addUser, loginUser, fetchAllUsers };
+module.exports = { addUser, loginUser, fetchAllUsers, loginAdmin };
